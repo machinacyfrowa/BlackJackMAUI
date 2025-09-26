@@ -72,5 +72,79 @@ namespace BlackJackMAUI
         {
             return Rank + " of " + Suit;
         }
+        /// <summary>
+        /// Metoda zwracająca nazwę pliku z obrazkiem karty
+        /// </summary>
+        /// <returns>Nazwa pliku z folderu Images</returns>
+        public string GetFileName()
+        {
+            //każda nazwa pliku zaczyna się od "card_"
+            string filename = "card_";
+            //używamy switcha do dopisania odpowiedniego stringa określającego rangę
+            switch (Rank)
+            {
+                case Rank.Ace:
+                    filename += "ace";
+                    break;
+                case Rank.Two:
+                    filename += "2";
+                    break;
+                case Rank.Three:
+                    filename += "3";
+                    break;
+                case Rank.Four:
+                    filename += "4";
+                    break;
+                case Rank.Five:
+                    filename += "5";
+                    break;
+                case Rank.Six:
+                    filename += "6";
+                    break;
+                case Rank.Seven:
+                    filename += "7";
+                    break;
+                case Rank.Eight:
+                    filename += "8";
+                    break;
+                case Rank.Nine:
+                    filename += "9";
+                    break;
+                case Rank.Ten:
+                    filename += "10";
+                    break;
+                case Rank.Jack:
+                    filename += "jack";
+                    break;
+                case Rank.Queen:
+                    filename += "queen";
+                    break;
+                case Rank.King:
+                    filename += "king";
+                    break;
+            }
+            //dodajemy podłogę pomiędzy rangą a kolorem
+            filename += "_";
+            //używamy switcha do dopisania odpowiedniego stringa określającego kolor
+            switch (Suit)
+            {
+                case Suit.Hearts:
+                    filename += "hearts";
+                    break;
+                case Suit.Diamonds:
+                    filename += "diamonds";
+                    break;
+                case Suit.Clubs:
+                    filename += "clubs";
+                    break;
+                case Suit.Spades:
+                    filename += "spades";
+                    break;
+            }
+            //na końcu dopisujemy rozszerzenie pliku
+            filename += ".png";
+            //zwracamy nazwę pliku
+            return filename;
+        }
     }
 }
