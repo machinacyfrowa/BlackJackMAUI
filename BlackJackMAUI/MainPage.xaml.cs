@@ -12,6 +12,7 @@
         {
             Card card = new Card();
             RandomCard.Text = card.ToString();
+            CardImage.Source = ImageSource.FromFile(card.GetFileName());
         }
     }
 }
