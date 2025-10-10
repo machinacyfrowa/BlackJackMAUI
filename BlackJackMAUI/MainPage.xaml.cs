@@ -4,13 +4,25 @@
     {
         Shoe Shoe;
         Hand PlayerHand;
+        Hand DealerHand;
         public MainPage()
         {
             InitializeComponent();
             Shoe = new Shoe();
             PlayerHand = new Hand();
+            DealerHand = new Hand();
             this.BackgroundImageSource = "table_background.jpg";
 
+        }
+
+        private void NewGame(object sender, EventArgs e)
+        {
+            //dwie karty dla dealera i gracza
+            DealerHand.AddCard(Shoe.Draw());
+            DealerHand.AddCard(Shoe.Draw());
+            PlayerHand.AddCard(Shoe.Draw());
+            PlayerHand.AddCard(Shoe.Draw());
+            RenderCards();
         }
         //test losowania karty z puli
         //private void PullRandomCard(object sender, EventArgs e)
@@ -30,19 +42,28 @@
         //    //renderujemy karty na ekranie
         //    RenderCards();
         //}
-        //private void RenderCards()
-        //{
-        //    //tutaj będziemy renderować karty na ekranie
-        //    //najpierw czyścimi stare karty
-        //    PlayerCardsHLayout.Children.Clear();
-        //    //reka gracza - PlayerCardsHLayout
-        //    foreach (Card card in PlayerHand.cards)
-        //    {
-        //        Image cardImage = new Image();
-        //        cardImage.Source = ImageSource.FromFile(card.GetFileName());
-        //        cardImage.HeightRequest = 150;   
-        //        PlayerCardsHLayout.Add(cardImage);
-        //    }
-        //}
+        private void RenderCards()
+        {
+            //tutaj będziemy renderować karty na ekranie
+            //najpierw czyścimi stare karty
+            PlayerCardsHLayout.Children.Clear();
+            DealerCardsHLayout.Children.Clear();
+            //reka gracza - PlayerCardsHLayout
+            foreach (Card card in PlayerHand.cards)
+            {
+                Image cardImage = new Image();
+                cardImage.Source = ImageSource.FromFile(card.GetFileName());
+                cardImage.HeightRequest = 150;
+                PlayerCardsHLayout.Add(cardImage);
+            }
+            //reka dealera - DealerCardsHLayout
+            foreach (Card card in DealerHand.cards)
+            {
+                Image cardImage = new Image();
+                cardImage.Source = ImageSource.FromFile(card.GetFileName());
+                cardImage.HeightRequest = 150;
+                DealerCardsHLayout.Add(cardImage);
+            }
+        }
     }
 }
