@@ -7,10 +7,9 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                x:Name="CardImage"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <HorizontalStackLayout x:Name="PlayerCardsHLayout">
+                
+            </HorizontalStackLayout>
             <Label
                 x:Name="RandomCard"
                 Text="tu bedzie wylosowana karta"

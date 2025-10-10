@@ -8,7 +8,7 @@ namespace BlackJackMAUI
 {
     internal class Hand
     {
-        List<Card> cards;
+        public List<Card> cards;
         public Hand() 
         {
             cards = new List<Card>();
