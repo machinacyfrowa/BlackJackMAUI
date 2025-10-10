@@ -17,6 +17,9 @@
 
         private void NewGame(object sender, EventArgs e)
         {
+            //czyścimy ręce
+            PlayerHand.cards.Clear();
+            DealerHand.cards.Clear();
             //dwie karty dla dealera i gracza
             DealerHand.AddCard(Shoe.Draw());
             DealerHand.AddCard(Shoe.Draw());
@@ -56,6 +59,7 @@
                 cardImage.HeightRequest = 150;
                 PlayerCardsHLayout.Add(cardImage);
             }
+            PlayerScore.Text = "Wartość kart: " + PlayerHand.Value();
             //reka dealera - DealerCardsHLayout
             foreach (Card card in DealerHand.cards)
             {
@@ -64,6 +68,7 @@
                 cardImage.HeightRequest = 150;
                 DealerCardsHLayout.Add(cardImage);
             }
+            DealerScore.Text = "Wartość kart: " + DealerHand.Value();
         }
     }
 }

@@ -15,10 +15,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Label
+            x:Name="DealerScore"
             Grid.Row="0"
             Grid.Column="0"
             Text="wynik_krupiera"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" FontSize="20" TextColor="#FFFFFF" />
         <HorizontalStackLayout 
             Grid.Row="1"
             Grid.Column="0"
@@ -37,10 +38,11 @@
             x:Name="PlayerCardsHLayout">
         </HorizontalStackLayout>
         <Label
+            x:Name="PlayerScore"
             Grid.Row="4"
             Grid.Column="0"
             Text="wynik gracza"
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" FontSize="20" TextColor="#FFFFFF" />
     </Grid>
 
 
