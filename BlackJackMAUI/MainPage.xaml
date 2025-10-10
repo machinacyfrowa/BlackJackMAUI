@@ -19,9 +19,9 @@
 
             <Button
                 x:Name="PullRandomCardButton"
-                Text="Wyciągnij losową kartę" 
+                Text="Wylosuj dwie karty" 
                 SemanticProperties.Hint="Losuje kartę"
-                Clicked="PullRandomCard"
+                Clicked="TestHand"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
