@@ -9,6 +9,8 @@
             InitializeComponent();
             Shoe = new Shoe();
             PlayerHand = new Hand();
+            this.BackgroundImageSource = "table_background.jpg";
+
         }
         //test losowania karty z puli
         //private void PullRandomCard(object sender, EventArgs e)
