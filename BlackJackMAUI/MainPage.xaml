@@ -3,26 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BlackJackMAUI.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25">
-            <HorizontalStackLayout x:Name="PlayerCardsHLayout">
-                
-            </HorizontalStackLayout>
-            <Label
-                x:Name="RandomCard"
-                Text="tu bedzie wylosowana karta"
-                Style="{StaticResource SubHeadline}"
-                SemanticProperties.HeadingLevel="Level2" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="20*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="wynik_krupiera"
+            HorizontalOptions="Center" />
+        <HorizontalStackLayout 
+            Grid.Row="1"
+            Grid.Column="0"
+            x:Name="DealerCardsHLayout">
+        </HorizontalStackLayout>
+        <HorizontalStackLayout 
+            Grid.Row="3"
+            Grid.Column="0"
+            x:Name="PlayerCardsHLayout">
+        </HorizontalStackLayout>
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            Text="wynik gracza"
+            HorizontalOptions="Center" />
+    </Grid>
 
-            <Button
-                x:Name="PullRandomCardButton"
-                Text="Wylosuj dwie karty" 
-                SemanticProperties.Hint="Losuje kartę"
-                Clicked="TestHand"
-                HorizontalOptions="Fill" />
-        </VerticalStackLayout>
-    </ScrollView>
 
 </ContentPage>
