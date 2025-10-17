@@ -70,5 +70,11 @@
             }
             DealerScore.Text = "Wartość kart: " + DealerHand.Value();
         }
+
+        private void HitButtonClicked(object sender, EventArgs e)
+        {
+            PlayerHand.AddCard(Shoe.Draw());
+            RenderCards();
+        }
     }
 }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BlackJackMAUI.MainPage">
 
-    <Grid>
+    <Grid
+        Padding="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*" />
             <RowDefinition Height="20*" />
@@ -19,7 +20,10 @@
             Grid.Row="0"
             Grid.Column="0"
             Text="wynik_krupiera"
-            HorizontalOptions="Center" FontSize="20" TextColor="#FFFFFF" />
+            HorizontalOptions="Center" 
+            FontSize="20" 
+            TextColor="#FFFFFF" 
+            VerticalTextAlignment="Center"/>
         <HorizontalStackLayout 
             Grid.Row="1"
             Grid.Column="0"
@@ -37,12 +41,37 @@
             Grid.Column="0"
             x:Name="PlayerCardsHLayout">
         </HorizontalStackLayout>
-        <Label
-            x:Name="PlayerScore"
+        <Grid
             Grid.Row="4"
-            Grid.Column="0"
-            Text="wynik gracza"
-            HorizontalOptions="Center" FontSize="20" TextColor="#FFFFFF" />
+            Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Hit" 
+                Clicked="HitButtonClicked"/>
+            <Label
+                x:Name="PlayerScore"
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="wynik gracza"
+                HorizontalOptions="Center" 
+                FontSize="20" 
+                TextColor="#FFFFFF" 
+                VerticalTextAlignment="Center" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="Stand" />
+        </Grid>
+        
     </Grid>
 
 
