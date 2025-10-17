@@ -5,6 +5,8 @@
         Shoe Shoe;
         Hand PlayerHand;
         Hand DealerHand;
+        //definiujemy flagę czy gracz jeszcze dobiera karty
+        bool PlayerTurn;
         public MainPage()
         {
             InitializeComponent();
@@ -12,7 +14,7 @@
             PlayerHand = new Hand();
             DealerHand = new Hand();
             this.BackgroundImageSource = "table_background.jpg";
-
+            PlayerTurn = true;
         }
 
         private void NewGame(object sender, EventArgs e)
@@ -30,6 +32,7 @@
             DealerHand.AddCard(Shoe.Draw());
             PlayerHand.AddCard(Shoe.Draw());
             PlayerHand.AddCard(Shoe.Draw());
+            PlayerTurn = true;
             RenderCards();
         }
         //test losowania karty z puli
@@ -73,6 +76,17 @@
                 cardImage.HeightRequest = 150;
                 DealerCardsHLayout.Add(cardImage);
             }
+            //podmień obrazek drugiej karty dealera jeśli trwa tura gracza
+            if (PlayerTurn)
+            {
+                if (DealerCardsHLayout.Children.Count > 1)
+                {
+                    Image backImage = new Image();
+                    backImage.Source = ImageSource.FromFile("card_back.png");
+                    backImage.HeightRequest = 150;
+                    DealerCardsHLayout.Children[1] = backImage;
+                }
+            }
             DealerScore.Text = "Wartość kart: " + DealerHand.Value();
         }
 
@@ -104,7 +118,8 @@
         /// <param name="e"></param>
         private void StandButtonClicked(object sender, EventArgs e)
         {
-            while(DealerHand.Value() < 17)
+            PlayerTurn = false;
+            while (DealerHand.Value() < 17)
             {
                 DealerHand.AddCard(Shoe.Draw());
             }
