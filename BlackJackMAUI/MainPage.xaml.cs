@@ -19,6 +19,9 @@
         {
             //znikamy guzik
             StartGameButton.IsVisible = false;
+            //pokazujemy guziki do gry
+            HitButton.IsVisible = true;
+            StandButton.IsVisible = true;
             //czyścimy ręce
             PlayerHand.cards.Clear();
             DealerHand.cards.Clear();
@@ -82,6 +85,8 @@
             {
                 DisplayAlert("Przegrałeś!", "Przekroczyłeś 21 punktów!", "OK");
                 StartGameButton.IsVisible = true;
+                HitButton.IsVisible = false;
+                StandButton.IsVisible = false;
             }
         }
         /// <summary>
@@ -91,6 +96,44 @@
         private bool PlayerBust()
         {
             return PlayerHand.Value() > 21;
+        }
+        /// <summary>
+        /// Gracz kończy dobieranie kart, kolej na dealera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void StandButtonClicked(object sender, EventArgs e)
+        {
+            while(DealerHand.Value() < 17)
+            {
+                DealerHand.AddCard(Shoe.Draw());
+            }
+            //pokazujemy karty
+            RenderCards();
+            //teraz mamy dwie opcje - albo dealer przekroczył 21 albo porównujemy wyniki
+            if (DealerHand.Value() > 21)
+            {
+                DisplayAlert("Wygrałeś!", "Dealer przekroczył 21 punktów!", "OK");
+            }
+            else
+            {
+                //porównujemy wyniki
+                if (PlayerHand.Value() > DealerHand.Value())
+                {
+                    DisplayAlert("Wygrałeś!", "Masz więcej punktów niż dealer!", "OK");
+                }
+                else if (PlayerHand.Value() < DealerHand.Value())
+                {
+                    DisplayAlert("Przegrałeś!", "Dealer ma więcej punktów!", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Remis!", "Masz tyle samo punktów co dealer!", "OK");
+                }
+            }
+            StartGameButton.IsVisible = true;
+            HitButton.IsVisible = false;
+            StandButton.IsVisible = false;
         }
     }
 }

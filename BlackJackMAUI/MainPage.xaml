@@ -53,10 +53,12 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Button
+                x:Name="HitButton"
                 Grid.Row="0"
                 Grid.Column="0"
                 Text="Hit" 
-                Clicked="HitButtonClicked"/>
+                Clicked="HitButtonClicked"
+                IsVisible="False"/>
             <Label
                 x:Name="PlayerScore"
                 Grid.Row="0"
@@ -67,9 +69,12 @@
                 TextColor="#FFFFFF" 
                 VerticalTextAlignment="Center" />
             <Button
+                x:Name="StandButton"
                 Grid.Row="0"
                 Grid.Column="2"
-                Text="Stand" />
+                Text="Stand" 
+                Clicked="StandButtonClicked"
+                IsVisible="False"/>
         </Grid>
         
     </Grid>
