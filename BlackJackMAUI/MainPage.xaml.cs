@@ -17,6 +17,8 @@
 
         private void NewGame(object sender, EventArgs e)
         {
+            //znikamy guzik
+            StartGameButton.IsVisible = false;
             //czyścimy ręce
             PlayerHand.cards.Clear();
             DealerHand.cards.Clear();
@@ -75,6 +77,20 @@
         {
             PlayerHand.AddCard(Shoe.Draw());
             RenderCards();
+            //sprawdzenie czy gracz nie przekroczył 21 punktów
+            if (PlayerBust())
+            {
+                DisplayAlert("Przegrałeś!", "Przekroczyłeś 21 punktów!", "OK");
+                StartGameButton.IsVisible = true;
+            }
+        }
+        /// <summary>
+        /// Metoda sprawdzająca czy gracz przekroczył 21 punktów
+        /// </summary>
+        /// <returns>True jeśli wartość ręki przekracza 21</returns>
+        private bool PlayerBust()
+        {
+            return PlayerHand.Value() > 21;
         }
     }
 }
